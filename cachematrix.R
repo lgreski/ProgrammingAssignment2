@@ -57,7 +57,7 @@ cacheSolve <- function(x, ...) {
      if (det(data) == 0) {
           ## can't invert this matrix, so set the cache to NULL
           ## and return
-          message("Determinant is zero, setting cache to NULL")
+          message("Determinant is zero: matrix not invertible, setting cache to NULL")
           x$setsolve(NULL)
           return(NULL)
      } 
