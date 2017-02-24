@@ -30,4 +30,7 @@ a <- makeCacheMatrix(matrix(c(-1, -2, 1, 1), 2,2))
 tracemem(a)
 tracemem(matrix(c(-1, -2, 1, 1), 2,2))
 
+# test non-matrix input: should return "not a matrix" error
 
+a$set(1:5)
+cacheSolve(a)
