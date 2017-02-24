@@ -49,8 +49,8 @@ cacheSolve <- function(x, ...) {
      
      ## invert the matrix, set the cache, and return
      data <- x$get()
-     if (is.na(data) == TRUE) {
-          stop("object passed to cacheSolve() is empty, cannot calculate its inverse.")
+     if (!is.matrix(data)) {
+          stop("object passed to cacheSolve() is not a valid matrix, cannot calculate its inverse.")
      }
      ## check to see whether matrix is invertible, meaning that
      ## the determinant must be non-zero
