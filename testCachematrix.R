@@ -11,6 +11,17 @@ cacheSolve(makeCacheMatrix(matrix(c(-1, -2, 1, 1), 2,2)))
 # call cacheSolve(a) a second time to trigger the "getting cached inverse" message
 cacheSolve(a)
 
+# reset a with another matrix to clear out cached value
+a$set(matrix(c(2,3,2,2),2,2))
+
+# confirm that a has new data and that cache is NULL
+a$get()
+a$getsolve()
+
+# rerun cache solve, note that "getting cached inverse" does not print,
+# and that we get a different result
+cacheSolve(a)
+
 # try a non-invertible matrix
 b <- makeCacheMatrix(matrix(c(0,0,0,0),2,2))
 cacheSolve(b)
