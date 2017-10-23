@@ -1,7 +1,10 @@
 # approach 1: create a matrix object, then use it as input to cacheSolve()
 
 a <- makeCacheMatrix(matrix(c(-1, -2, 1, 1), 2,2))
-cacheSolve(a)
+b <- cacheSolve(a)
+c <-matrix(c(-1, -2, 1, 1), 2,2) 
+d <- solve(c)
+identical(b,d)
 
 # call cacheSolve(a) a second time to trigger the "getting cached inverse" message
 cacheSolve(a)
