@@ -29,8 +29,9 @@ cacheSolve(a)
 cacheSolve(makeCacheMatrix(matrix(c(-1, -2, 1, 1), 2,2)))
 
 # try a non-invertible matrix
+rm(b)
 b <- makeCacheMatrix(matrix(c(0,0,0,0),2,2))
-cacheSolve(b)
+
 
 # illustrate getting the memory locations
 a <- makeCacheMatrix(matrix(c(-1, -2, 1, 1), 2,2))
@@ -50,14 +51,13 @@ tracemem(matrix(c(-1, -2, 1, 1), 2,2))
 # test non-matrix input: should return "not a matrix" error
 
 a$set(1:5)
-cacheSolve(a)
 
 # test an input that is not an object of type makeCacheMatrix()
 # should return "input must be of type makeCacheMatrix()"
 cacheSolve(matrix(c(-1, -2, 1, 1), 2,2))
 
 ## test non-square matrix
-cacheSolve(makeCacheMatrix(matrix(c(-1, -2, 1, 1,4,5), 3,2)))
 z <- makeCacheMatrix(matrix(c(-1, -2, 1, 1,4,5), 3,2))
+cacheSolve(makeCacheMatrix(matrix(c(-1, -2, 1, 1,4,5), 3,2)))
 
 

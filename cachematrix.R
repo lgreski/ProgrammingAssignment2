@@ -9,15 +9,18 @@
 
 makeCacheMatrix <- function(x = matrix()) {
      ## confirm input is a square matrix
-     if (!is.matrix(x) || nrow(x) != ncol(x)) {
-          stop("object passed to makeCacheMatrix() is not a square matrix, object not initialized.")
-      }
+     if(!isValidMatrix(x)) {
+             stop("input is not a valid matrix")
+             return(NULL)
+     }
      ## initialize theInverse to NULL
      theInverse <- NULL
      ## assign contents of input to cached matrix and NULL the inverse
      set <- function(y) {
-         if (!is.matrix(y) || nrow(y) != ncol(y)) {
-                 stop("object passed to makeCacheMatrix() is not a square matrix, object not initialized.")
+         ## confirm input is a square matrix
+         if(!isValidMatrix(y)) {
+                 stop("input is not a valid matrix")
+                 return(NULL)
          }
          x <<- y
          theInverse <<- NULL
@@ -62,23 +65,21 @@ cacheSolve <- function(x, ...) {
           message("getting cached inverse")
           return(theMatrix)
      }
-     ## if we get past the if() statement, the cache is empty
-     
+     ## if we get past the if() statement, the cache is empty, so
      ## invert the matrix, set the cache, and return
      data <- x$get()
-     if (!is.matrix(data) || nrow(data) != ncol(data)) {
-          stop("object passed to cacheSolve() is not a square matrix, cannot calculate its inverse.")
-     }
-     ## check to see whether matrix is invertible, meaning that
-     ## the determinant must be non-zero
-     if (det(data) == 0) {
-          ## can't invert this matrix, so set the cache to NULL
-          ## and return
-          message("Determinant is zero: matrix not invertible, setting cache to NULL")
-          x$setsolve(NULL)
-          return(NULL)
-     } 
      theMatrix <- solve(data)
      x$setsolve(theMatrix)
      theMatrix
+}
+
+isValidMatrix <- function(x = matrix()) {
+        # validate as square matrix
+        if (!is.matrix(x) || nrow(x) != ncol(x)) {
+                stop("object passed to makeCacheMatrix() is not a square matrix, object not initialized.")
+        }
+        if(det(x) == 0) stop("Determinant is zero: matrix not invertible, object not initialized")
+        # if we get this far, matrix is square and invertible and therefore
+        # can be inverted and cached 
+        return(TRUE)
 }
