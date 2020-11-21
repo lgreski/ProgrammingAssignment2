@@ -24,6 +24,9 @@ a$getsolve()
 # and that we get a different result
 cacheSolve(a)
 
+# now return "getting cached inverse" message
+cacheSolve(a)
+
 # approach 2: use makeCacheMatrix() as the input argument to cacheSolve()
 #             note that the argument to cacheSolve() is a different object
 #             than the argument to the first call of cacheSolve()
@@ -60,5 +63,8 @@ cacheSolve(matrix(c(-1, -2, 1, 1), 2,2))
 ## test non-square matrix
 z <- makeCacheMatrix(matrix(c(-1, -2, 1, 1,4,5), 3,2))
 cacheSolve(makeCacheMatrix(matrix(c(-1, -2, 1, 1,4,5), 3,2)))
+
+## test non-invertible matrix
+z <- makeCacheMatrix(matrix(c(0,0,0,0),2,2))
 
 

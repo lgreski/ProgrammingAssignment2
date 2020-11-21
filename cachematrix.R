@@ -9,19 +9,13 @@
 
 makeCacheMatrix <- function(x = matrix()) {
      ## confirm input is a square matrix
-     if(!isValidMatrix(x)) {
-             stop("input is not a valid matrix")
-             return(NULL)
-     }
+     if(isValidMatrix(x)) # when if() fails, function will stop
      ## initialize theInverse to NULL
      theInverse <- NULL
      ## assign contents of input to cached matrix and NULL the inverse
      set <- function(y) {
          ## confirm input is a square matrix
-         if(!isValidMatrix(y)) {
-                 stop("input is not a valid matrix")
-                 return(NULL)
-         }
+         if(isValidMatrix(y)) # when if() fails, function will stop
          x <<- y
          theInverse <<- NULL
      }
