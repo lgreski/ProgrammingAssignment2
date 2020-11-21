@@ -9,16 +9,18 @@
 
 makeCacheMatrix <- function(x = matrix()) {
      ## confirm input is a square matrix
-     if (!is.matrix(data) || nrow(data) != ncol(data)) {
+     if (!is.matrix(x) || nrow(x) != ncol(x)) {
           stop("object passed to makeCacheMatrix() is not a square matrix, object not initialized.")
       }
-        
      ## initialize theInverse to NULL
      theInverse <- NULL
      ## assign contents of input to cached matrix and NULL the inverse
      set <- function(y) {
-          x <<- y
-          theInverse <<- NULL
+         if (!is.matrix(y) || nrow(y) != ncol(y)) {
+                 stop("object passed to makeCacheMatrix() is not a square matrix, object not initialized.")
+         }
+         x <<- y
+         theInverse <<- NULL
      }
      
      ## setup get, setsolve, and getsolve functions to access cache
