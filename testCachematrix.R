@@ -10,7 +10,8 @@ identical(b,d)
 cacheSolve(a)
 
 # multiply the matrix by inverse, resulting in identity matrix
-a$get() %*% a$getsolve()
+# check by comparing to result from diag() function 
+identical(a$get() %*% a$getsolve(),diag(x=1,nrow(a$get()),ncol(a$get())))
 
 # reset a with another matrix to clear out cached value
 a$set(matrix(c(2,3,2,2),2,2))
