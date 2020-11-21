@@ -58,5 +58,6 @@ cacheSolve(matrix(c(-1, -2, 1, 1), 2,2))
 
 ## test non-square matrix
 cacheSolve(makeCacheMatrix(matrix(c(-1, -2, 1, 1,4,5), 3,2)))
+z <- makeCacheMatrix(matrix(c(-1, -2, 1, 1,4,5), 3,2))
 
 

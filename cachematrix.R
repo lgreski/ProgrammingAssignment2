@@ -8,6 +8,11 @@
 ## makeCacheMatrix() - create a cache for a matrix 
 
 makeCacheMatrix <- function(x = matrix()) {
+     ## confirm input is a square matrix
+     if (!is.matrix(data) || nrow(data) != ncol(data)) {
+          stop("object passed to makeCacheMatrix() is not a square matrix, object not initialized.")
+      }
+        
      ## initialize theInverse to NULL
      theInverse <- NULL
      ## assign contents of input to cached matrix and NULL the inverse
