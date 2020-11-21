@@ -40,6 +40,14 @@ cacheSolve <- function(x, ...) {
      ## Note: x must be an object of makeCacheMatrix, as I describe 
      ## in my article called makeCacheMatrix() as an Object stored at
      ## https://github.com/lgreski/datasciencectacontent
+        
+     ## confirm input is a list() with 4 named elements corresponding
+     ## to 4 functions for makeCacheMatrix() 
+     if ((class(x) != "list") ||
+        sum(names(x) %in% c("set","get","setsolve","getsolve")) != 4) {
+             message("input must be of type makeCacheMatrix()")
+             return(NULL)
+     }
      
      ## Attempt to retrieve matrix from cache
      theMatrix <- x$getsolve()

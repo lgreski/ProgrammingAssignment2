@@ -51,3 +51,7 @@ tracemem(matrix(c(-1, -2, 1, 1), 2,2))
 
 a$set(1:5)
 cacheSolve(a)
+
+# test an input that is not an object of type makeCacheMatrix()
+# should return "input must be of type makeCacheMatrix()"
+cacheSolve(matrix(c(-1, -2, 1, 1), 2,2))
