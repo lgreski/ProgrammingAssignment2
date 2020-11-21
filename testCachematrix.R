@@ -55,3 +55,8 @@ cacheSolve(a)
 # test an input that is not an object of type makeCacheMatrix()
 # should return "input must be of type makeCacheMatrix()"
 cacheSolve(matrix(c(-1, -2, 1, 1), 2,2))
+
+## test non-square matrix
+cacheSolve(makeCacheMatrix(matrix(c(-1, -2, 1, 1,4,5), 3,2)))
+
+
